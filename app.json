@@ -16,6 +16,7 @@
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
       }
-    }
+    },
+    "scheme": "doctorappointmentapp"
   }
 }

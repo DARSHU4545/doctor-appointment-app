@@ -3,6 +3,7 @@ import React from "react";
 import Header from "../components/home/Header";
 import SearchBar from "../components/home/SearchBar";
 import Slider from "../components/home/Slider";
+import DoctorSpeciality from "../components/home/DoctorSpeciality";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Header />
       <SearchBar setSearchText={(value) => console.log(value)} />
       <Slider />
+      <DoctorSpeciality />
     </View>
   );
 };

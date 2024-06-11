@@ -9,7 +9,7 @@ const SearchBar = ({ setSearchText }) => {
         <Ionicons name="search" size={24} color="black" />
         <TextInput
           placeholder="Search..."
-          className=" w-[85%] h-[100%] line-clamp-1"
+          className=" w-[85%] h-[100%] [WebkitLineClamp: 1] "
           onChangeText={(val) => {
             setSearchVal(val);
           }}

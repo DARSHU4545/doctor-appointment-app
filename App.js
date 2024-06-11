@@ -5,14 +5,16 @@ import Home from "./Screens/Home";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigation from "./Screens/Navigations/TabNavigation";
 import { StatusBar } from "expo-status-bar";
-
+import LinkingConfiguration from "./LinkingConfiguration";
+import { createStackNavigator } from "@react-navigation/stack";
+const Stack = createStackNavigator();
 export default function App() {
   return (
     <ClerkProvider publishableKey="pk_test_cmVsYXhlZC1jYXQtNjAuY2xlcmsuYWNjb3VudHMuZGV2JA">
       <View className=" flex-1 ">
         <StatusBar />
         <SignedIn>
-          <NavigationContainer>
+          <NavigationContainer linking={LinkingConfiguration}>
             <TabNavigation />
           </NavigationContainer>
         </SignedIn>
