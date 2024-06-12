@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import Header from "../components/home/Header";
 import SearchBar from "../components/home/SearchBar";
 import Slider from "../components/home/Slider";
 import DoctorSpeciality from "../components/home/DoctorSpeciality";
+import HospitalCard from "../components/home/HospitalCard";
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <SearchBar setSearchText={(value) => console.log(value)} />
       <Slider />
       <DoctorSpeciality />
+      <HospitalCard />
     </View>
   );
 };
