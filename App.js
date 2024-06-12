@@ -1,7 +1,7 @@
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import Login from "./Screens/Auth/Login";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
-import Home from "./Screens/Home";
+
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigation from "./Screens/Navigations/TabNavigation";
 import { StatusBar } from "expo-status-bar";
