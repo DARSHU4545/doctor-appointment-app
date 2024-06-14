@@ -1,15 +1,27 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import PageHeader from "../components/shared/PageHeader";
 import HospitalDoctorTab from "../components/hospital-doctor-page/HospitalDoctorTab";
+import HospitalList from "../components/hospital-doctor-page/HospitalList";
+import DoctorsList from "../components/hospital-doctor-page/DoctorsList";
 
 const HospitalDoctorsList = () => {
   const params = useRoute().params;
+  const [isActiveTab, setIsActiveTab] = useState("hospitals");
+
   return (
     <View>
       <PageHeader tittle={params.categoryName} />
-      <HospitalDoctorTab />
+      <HospitalDoctorTab
+        isActiveTab={isActiveTab}
+        setIsActiveTab={setIsActiveTab}
+      />
+      {isActiveTab == "hospitals" ? (
+        <HospitalList catName={params.categoryName} />
+      ) : (
+        <DoctorsList catName={params.categoryName} />
+      )}
     </View>
   );
 };

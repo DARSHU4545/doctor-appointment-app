@@ -3,6 +3,9 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../Home";
 import HospitalDoctorsList from "../HospitalDoctorsList";
+import HospitalDetails from "../HospitalDetails";
+import HospitalAppointmentList from "../BookAppointment";
+import BookAppointment from "../BookAppointment";
 
 const HomeNavigation = () => {
   const Stack = createStackNavigator();
@@ -13,6 +16,8 @@ const HomeNavigation = () => {
         name="hospital-doctors-list"
         component={HospitalDoctorsList}
       ></Stack.Screen>
+      <Stack.Screen name="hospitalDetails" component={HospitalDetails} />
+      <Stack.Screen name="bookappointment" component={BookAppointment} />
     </Stack.Navigator>
   );
 };

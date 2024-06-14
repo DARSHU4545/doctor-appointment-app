@@ -1,9 +1,12 @@
 import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { ActivityIndicator } from "react-native"; // Import the ActivityIndicator component
 
 const HospitalCard = () => {
   const [hospitals, setHospitals] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading
+
   useEffect(() => {
     axios
       .get(
@@ -11,43 +14,73 @@ const HospitalCard = () => {
       )
       .then((res) => {
         setHospitals(res.data);
+        setLoading(false); // Set loading to false after data is fetched
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setLoading(false); // Set loading to false in case of an error
+      });
   }, []);
+
+  // Function to render skeleton loader
+  const renderSkeleton = () => {
+    return (
+      <View className="flex-col mx-2 w-[250px] border border-gray-400 my-2 rounded-xl overflow-hidden">
+        <View className="w-full h-[120px] bg-gray-300" />
+        <View className="py-2 w-full bg-gray-200">
+          <View className="w-3/4 h-4 bg-gray-300 rounded-md mt-2 mx-3" />
+          <View className="w-1/2 h-4 bg-gray-300 rounded-md mt-2 mx-3" />
+        </View>
+      </View>
+    );
+  };
+
   return (
     <View>
-      <View className=" flex-row justify-between items-center">
-        <Text className=" font-bold text-lg"> Our Premium Hospitals</Text>
+      <View className="flex-row justify-between items-center">
+        <Text className="font-bold text-lg">Our Premium Hospitals</Text>
         <TouchableOpacity>
-          <Text className=" text-blue-700 font-bold text-lg">See All</Text>
+          <Text className="text-blue-700 font-bold text-lg">See All</Text>
         </TouchableOpacity>
       </View>
-      <View className=" my-3 w-full ">
-        <FlatList
-          data={hospitals}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({ item, index }) =>
-            index < 2 && (
-              <View className=" flex-col  mx-2  w-[220px]  border border-gray-400 my-2 rounded-xl overflow-hidden">
-                <View className="  bg-blue-100 rounded-full w-full h-[120px]">
-                  <Image
-                    source={{ uri: item.images[0].imageUrl }}
-                    className=" w-[100%] h-[100%] object-cover "
-                  />
+      <View className="my-3 w-full">
+        {loading ? (
+          // Render skeleton loaders while loading
+          <FlatList
+            data={Array.from({ length: 2 })}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={renderSkeleton}
+            keyExtractor={(item, index) => index.toString()}
+          />
+        ) : (
+          // Render actual data after loading
+          <FlatList
+            data={hospitals}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            renderItem={({ item, index }) =>
+              index < 2 && (
+                <View className="flex-col mx-2 w-[250px] border border-gray-400 my-2 rounded-xl overflow-hidden">
+                  <View className="w-full h-[120px]">
+                    <Image
+                      source={{ uri: item.images[0].imageUrl }}
+                      className="w-[100%] h-[100%] object-cover"
+                    />
+                  </View>
+                  <View className="py-2 w-full bg-slate-50">
+                    <Text className="font-semibold text-[18px] px-3">
+                      {item.name}
+                    </Text>
+                    <Text className="px-3 my-1 text-gray-700">
+                      {item.address}
+                    </Text>
+                  </View>
                 </View>
-                <View className=" py-2 w-full bg-slate-50">
-                  <Text className=" font-semibold text-[18px]  px-3">
-                    {item.name}
-                  </Text>
-                  <Text className=" px-3 my-1 text-gray-700 ">
-                    {item.address}
-                  </Text>
-                </View>
-              </View>
-            )
-          }
-        />
+              )
+            }
+          />
+        )}
       </View>
     </View>
   );

@@ -1,18 +1,17 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 
-const HospitalDoctorTab = () => {
-  const [isActiveTab, setIsActiveTab] = useState(0);
+const HospitalDoctorTab = ({ isActiveTab, setIsActiveTab }) => {
   return (
     <View className=" flex-row items-center justify-around">
       <TouchableOpacity
         onPress={() => {
-          setIsActiveTab(0);
+          setIsActiveTab("hospitals");
         }}
       >
         <Text
           className={`font-bold text-[16px] pb-1   ${
-            isActiveTab == 0
+            isActiveTab == "hospitals"
               ? " text-blue-500 border-b-2 border-blue-500 "
               : " text-gray-500 border-b-2 border-b-gray-600"
           }`}
@@ -20,10 +19,10 @@ const HospitalDoctorTab = () => {
           Hospital
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => setIsActiveTab(1)}>
+      <TouchableOpacity onPress={() => setIsActiveTab("doctors")}>
         <Text
           className={`font-bold text-[16px] pb-1 ${
-            isActiveTab == 1
+            isActiveTab == "doctors"
               ? " text-blue-500 border-b-2 border-b-blue-500 "
               : " text-gray-500 border-b-2 border-b-gray-600"
           }`}
