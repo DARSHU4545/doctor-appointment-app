@@ -1,13 +1,12 @@
-import { View, Text } from "react-native";
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "../Home";
+
 import Profile from "../Profile";
 import Appointment from "../Appointment";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import HomeNavigation from "./HomeNavigation";
+import Explore from "../Explore";
 const Tab = createBottomTabNavigator();
 const TabNavigation = () => {
   return (
@@ -18,6 +17,15 @@ const TabNavigation = () => {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Explore"
+        component={Explore}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="explore" size={size} color={color} />
           ),
         }}
       />

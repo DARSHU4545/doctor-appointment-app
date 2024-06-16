@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, ScrollView } from "react-native";
 import React, { useState } from "react";
 import { useRoute } from "@react-navigation/native";
 import PageHeader from "../components/shared/PageHeader";
@@ -11,7 +11,7 @@ const HospitalDoctorsList = () => {
   const [isActiveTab, setIsActiveTab] = useState("hospitals");
 
   return (
-    <View>
+    <ScrollView>
       <PageHeader tittle={params.categoryName} />
       <HospitalDoctorTab
         isActiveTab={isActiveTab}
@@ -22,7 +22,7 @@ const HospitalDoctorsList = () => {
       ) : (
         <DoctorsList catName={params.categoryName} />
       )}
-    </View>
+    </ScrollView>
   );
 };
 

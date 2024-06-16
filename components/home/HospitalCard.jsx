@@ -2,8 +2,10 @@ import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ActivityIndicator } from "react-native"; // Import the ActivityIndicator component
+import { useNavigation } from "@react-navigation/native";
 
 const HospitalCard = () => {
+  const navigate = useNavigation();
   const [hospitals, setHospitals] = useState([]);
   const [loading, setLoading] = useState(true); // State to manage loading
 
@@ -39,9 +41,6 @@ const HospitalCard = () => {
     <View>
       <View className="flex-row justify-between items-center">
         <Text className="font-bold text-lg">Our Premium Hospitals</Text>
-        <TouchableOpacity>
-          <Text className="text-blue-700 font-bold text-lg">See All</Text>
-        </TouchableOpacity>
       </View>
       <View className="my-3 w-full">
         {loading ? (
@@ -61,7 +60,12 @@ const HospitalCard = () => {
             showsHorizontalScrollIndicator={false}
             renderItem={({ item, index }) =>
               index < 2 && (
-                <View className="flex-col mx-2 w-[250px] border border-gray-400 my-2 rounded-xl overflow-hidden">
+                <TouchableOpacity
+                  className="flex-col mx-2 w-[250px] border border-gray-400 my-2 rounded-xl overflow-hidden"
+                  onPress={() => {
+                    navigate.navigate("hospitalDetails", { id: item._id });
+                  }}
+                >
                   <View className="w-full h-[120px]">
                     <Image
                       source={{ uri: item.images[0].imageUrl }}
@@ -76,7 +80,7 @@ const HospitalCard = () => {
                       {item.address}
                     </Text>
                   </View>
-                </View>
+                </TouchableOpacity>
               )
             }
           />

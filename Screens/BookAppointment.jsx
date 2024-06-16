@@ -10,7 +10,7 @@ const BookAppointment = () => {
   return (
     <View>
       <HospitalAppointmentInfo hospital={hospital} />
-      <BookingSection />
+      <BookingSection hospitalId={hospital._id} />
     </View>
   );
 };

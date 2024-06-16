@@ -46,10 +46,10 @@ const HospitalDetails = () => {
 
   if (!hospital) {
     return (
-      <SafeAreaView className="relative flex-1 p-4">
+      <View className="relative flex-1 p-4">
         <StatusBar hidden />
         <View className="absolute z-50 w-full">
-          <PageHeader title="" color="white" />
+          <PageHeader title="" color="blue" />
         </View>
         <View className="animate-pulse">
           <View className="w-full h-52 bg-gray-300 rounded-md" />
@@ -87,7 +87,7 @@ const HospitalDetails = () => {
             />
           </View>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 
@@ -95,7 +95,7 @@ const HospitalDetails = () => {
     <SafeAreaView className="relative flex-1 bg-white">
       <StatusBar hidden />
       <View className="absolute z-50 w-full">
-        <PageHeader title={""} color="white" />
+        <PageHeader title={""} color="black" />
       </View>
       <View>
         {hospital.images && hospital.images.length > 0 ? (
@@ -134,7 +134,7 @@ const HospitalDetails = () => {
         </View>
         <View className="my-2 flex-row gap-x-3 items-center">
           <AntDesign name="clockcircle" size={20} color="blue" />
-          <Text>11:00 AM - 9:00 PM</Text>
+          <Text>8:00 AM - 9:30 PM</Text>
         </View>
         <View className="py-3 border-b border-gray-400">
           <FlatList

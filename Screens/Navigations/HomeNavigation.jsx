@@ -6,6 +6,7 @@ import HospitalDoctorsList from "../HospitalDoctorsList";
 import HospitalDetails from "../HospitalDetails";
 import HospitalAppointmentList from "../BookAppointment";
 import BookAppointment from "../BookAppointment";
+import DoctorSpecialityList from "../DoctorSpecialityList";
 
 const HomeNavigation = () => {
   const Stack = createStackNavigator();
@@ -18,6 +19,10 @@ const HomeNavigation = () => {
       ></Stack.Screen>
       <Stack.Screen name="hospitalDetails" component={HospitalDetails} />
       <Stack.Screen name="bookappointment" component={BookAppointment} />
+      <Stack.Screen
+        name="doctorSpecialitylist"
+        component={DoctorSpecialityList}
+      />
     </Stack.Navigator>
   );
 };

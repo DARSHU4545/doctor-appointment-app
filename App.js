@@ -1,4 +1,4 @@
-import { ScrollView, View } from "react-native";
+import { View } from "react-native";
 import Login from "./Screens/Auth/Login";
 import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 

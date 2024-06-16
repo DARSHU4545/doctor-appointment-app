@@ -1,9 +1,10 @@
-import { View, Text, TouchableOpacity, FlatList, Image } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import PageHeader from "../components/shared/PageHeader";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
-const DoctorSpeciality = () => {
+const DoctorSpecialityList = () => {
   const navigate = useNavigation();
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true); // State to manage loading
@@ -35,14 +36,7 @@ const DoctorSpeciality = () => {
 
   return (
     <View className="my-3 w-full">
-      <View className="flex-row justify-between items-center">
-        <Text className="font-bold text-lg">Doctor Speciality</Text>
-        <TouchableOpacity
-          onPress={() => navigate.navigate("doctorSpecialitylist")}
-        >
-          <Text className="text-blue-700 font-bold text-lg">See All</Text>
-        </TouchableOpacity>
-      </View>
+      <PageHeader tittle={"Doctor Speaciality"} />
       <View className="my-3">
         {loading ? (
           // Render skeleton loaders while loading
@@ -52,7 +46,7 @@ const DoctorSpeciality = () => {
             columnWrapperStyle={{
               flex: 1,
               justifyContent: "space-between",
-              marginVertical: 6,
+              marginVertical: 8,
             }}
             renderItem={renderSkeleton}
             keyExtractor={(item, index) => index.toString()}
@@ -65,10 +59,10 @@ const DoctorSpeciality = () => {
             columnWrapperStyle={{
               flex: 1,
               justifyContent: "space-between",
-              marginVertical: 6,
+              marginVertical: 8,
             }}
             renderItem={({ item, index }) =>
-              index < 4 && (
+              index < category.length && (
                 <View className="flex-col items-center gap-y-2 mx-2">
                   <TouchableOpacity
                     className="bg-blue-100 rounded-full w-[60px] h-[60px] items-center justify-center"
@@ -94,4 +88,4 @@ const DoctorSpeciality = () => {
   );
 };
 
-export default DoctorSpeciality;
+export default DoctorSpecialityList;

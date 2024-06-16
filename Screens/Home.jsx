@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, StatusBar } from "react-native";
+import { View, StatusBar } from "react-native";
 import React from "react";
 import Header from "../components/home/Header";
 import SearchBar from "../components/home/SearchBar";
